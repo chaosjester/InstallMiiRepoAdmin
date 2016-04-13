@@ -1,0 +1,109 @@
+<?php
+session_start();
+
+include("./includes/includes.php");
+
+
+if(!isset($_SESSION['name']))
+{
+  $_SESSION['error'] = "Either you are not logged in or your username and/or password are incorrect. Please try again.";
+  header("Location: index.php");
+  exit();
+}
+
+$rows = $db->query("SELECT COUNT(*) as count FROM packages");
+$row = $rows->fetchArray();
+$numRows = $row['count'];
+
+?><!DOCTYPE html>
+<html>
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="custom.css">
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel='shortcut icon' type='image/x-icon' href='../favicon.ico' />
+  <title>Repo Admin</title>
+</head>
+
+<body>
+
+
+<?php
+
+require_once './Mobile_Detect.php';
+$detect = new Mobile_Detect;
+
+$_SESSION['devtype'] = ($detect->isNintendo());
+
+ if ($_SESSION['devtype'] == TRUE){
+  include('3dshead.php'); 
+} else {
+
+  include('header.php'); } ?>
+   
+<main>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m10 offset-m1 center-align">
+        <?php if(file_exists("../admin/install/index.php")){ ?>
+        <div class="row">
+          <div class="col s12 center-align">
+            <div class="card-panel dismissable orange white-text">
+              <i class="large material-icons">report_problem</i><h3>WARNING!</h3>
+              <p>Instalation files still exist<br>if you want to add more admin accounts, do so now and remove the /admin/install directory<br>This message will dissapear when the files have been deleted</p>
+            </div>
+          </div>
+        </div>
+        <?php }?>
+        <?php if(!file_exists("../repo.list")){ ?>
+        <div class="row">
+          <div class="col s12 center-align">
+            <div class="card-panel dismissable orange white-text">
+              <i class="large material-icons">report_problem</i><h3>WARNING!</h3>
+              <p>You have not generated a repo.list file<br>Please proceed to the "Manage Repo List" page to create one.</p>
+              <a href="repolist.php" class="btn waves-effect waves-light">Manage Repo List</a>
+            </div>
+          </div>
+        </div>
+        <?php }?>
+        <?php if(!file_exists("../packages.json")){ ?>
+        <div class="row">
+          <div class="col s12 center-align">
+            <div class="card-panel dismissable orange white-text">
+              <i class="large material-icons">report_problem</i><h3>WARNING!</h3>
+              <p>You have not generated a packages.json file<br>Please proceed to the "Generate Package Lists" page to create one.</p>
+              <a href="generatejson.php" class="btn waves-effect waves-light">Generate Package Lists</a>
+            </div>
+          </div>
+        </div>
+        <?php }?>
+        <div class="card blue-grey darken-1">
+         <div class="card-content white-text">
+           <span class="card-title">Welcome <?php echo $_SESSION['name'];?></span>
+           <p>Welcome to your InstallMii Repo Admin page.<br>You currently have <?php echo $numRows; ?> Package(s) configured.</p>
+         </div>
+         <div class="card-action">
+           <a href="viewpackage.php">View Packages</a>
+           <a href="generatejson.php">Generate Repo Files</a>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</main>
+<?php include("footer.php");?>
+
+
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+<script src="custom.js"></script>
+</body>
+</html>
