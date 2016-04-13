@@ -14,43 +14,41 @@ The index has a download link to the repo.list, the package.list and packages.js
 
 # Requirements:
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+#### !!!!!!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!
 Homebrew apps MUST be in a folder named 3ds under the repo root directory
+
 For example, if your repo is http://repo.example.com/ apps must be in
+
 http://repo.example.com/3ds or if in http://example.com/repo the 3ds
+
 directory must be in http://example.com/repo/3ds
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+- Apache
 
-Apache
+- PHP >= 5.5 - This is due to password mangement, there is no exceptions to this
 
-PHP >= 5.5 - This is due to password mangement, there is no exceptions to this
+- PHP MUST run as your user, not a service account unless that account has permissions to the folders
 
-PHP MUST run as your user, not a service account unless that account has permissions to the folders
+- PHP Module SQLITE3 
 
-PHP Module SQLITE3 
+- Directories must be writable
 
-Directories must be writable
-
-An smdh file should be present in the homebrew application folder or some manual configuration is required
+- An smdh file should be present in the homebrew application folder or some manual configuration is required
 
 # Instructions:
 
-Download latest release
+- Download latest release
 
-You might need to create SQL database on your server, along with a user that has access to create tables and modify tables, though the installer may create them for you
+- Upload to webhost
 
-Upload to webhost
+- Go to http://yourrepo.com/, you will be directed to the install page
 
-Go to http://yourrepo.com/, you will be directed to the install page
+- On the install page, follow the directions to create the database and user
 
-On the install page, follow the directions to create the database and user
+- Head back to http://yourrepo.com/admin and ensure you can log in
 
-Head back to http://yourrepo.com/admin and ensure you can log in
+- Create additional admin accounts if required, otherwise it is advised to delete the /admin/install directory
 
-Create additional admin accounts if required, otherwise it is advised to delete the /admin/install directory
-
-Once in, the interface is pretty straight forward.
+- Once in, the interface is pretty straight forward.
 
 
