@@ -92,9 +92,9 @@ if (file_exists("./admin/includes/repo.db")) {
 					</div>
 
 					<div class="col l6 s12">
-						<h5 class="grey-text text-lighten-3">PHPInstallMiiRepo by ChaosJester and LiquidFenrir</h5>
+						<h5 class="grey-text text-lighten-3">InstallMiiRepo by ChaosJester and LiquidFenrir</h5>
 						<p><a class="grey-text text-lighten-3" href="https://www.flickr.com/photos/axor/6886961313/" target="_blank"><i class="fa fa-flickr fa-2x left"></i> Background picture by Axel Pfaender, used under creative commons license</a></p>
-						<p><a class="grey-text text-lighten-4" href="https://github.com/chaosjester/PHPInstallMiiRepoAdmin" target="_blank"><i class="fa fa-github fa-2x left"></i> Project GitHub page</a></p>
+						<p><a class="grey-text text-lighten-4" href="https://github.com/chaosjester/InstallMiiRepoAdmin" target="_blank"><i class="fa fa-github fa-2x left"></i> Project GitHub page</a></p>
 
 					</div>
 				</div>
