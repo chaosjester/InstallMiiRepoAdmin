@@ -41,14 +41,18 @@ if (file_exists("./admin/includes/repo.db")) {
 
 <body>
 	<header>
-		<nav>
-			<div class="nav-wrapper blue-grey darken-4">
-				<a class="brand-logo center"><?php echo $reponame ?></a>
-				<ul class="right hide-on-med-and-down">
-					<li><a href="admin/"><i class="material-icons right">view_module</i>Admin Login</a></li>
-				</ul>
-			</div>
-		</nav>
+	<nav>
+	  <div class="nav-wrapper blue-grey darken-4">
+	    <a href="#!" class="brand-logo center"><?php echo $reponame ?></a>
+	    <a href="#" data-activates="sidemenu" class="button-collapse"><i class="material-icons">menu</i></a>
+	    <ul class="right hide-on-med-and-down">
+	    <li><a href="admin/"><i class="material-icons right">view_module</i>Admin Login</a></li>
+	    </ul>
+	    <ul class="side-nav" id="sidemenu">
+	    <li><a href="admin/"><i class="material-icons right">view_module</i>Admin Login</a></li>
+	    </ul>
+	  </div>
+	</nav>
 	</header>
 	<main>
 		<div class="parallax-container">
